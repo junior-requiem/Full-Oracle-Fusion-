@@ -1,0 +1,310 @@
+# Oracle Fusion Architecture Agent Context
+
+## Purpose
+
+This document defines the **high-level architecture model of Oracle
+Fusion HCM + ERP** for use by an AI agent.
+
+The goal is to allow the agent to explain the Oracle Fusion ecosystem,
+system relationships, and process flows **at a glance**.
+
+The agent should treat the platform as a **layered enterprise system**
+rather than a collection of unrelated modules.
+
+------------------------------------------------------------------------
+
+# Core System Principle
+
+Oracle Fusion operates as a pipeline:
+
+Capture Work ↓ Validate Rules ↓ Calculate Outcomes ↓ Route to Accounting
+↓ Record Financial Truth ↓ Report Results
+
+Every module in the platform participates in this pipeline.
+
+------------------------------------------------------------------------
+
+# Architecture Layers
+
+The Oracle Fusion ecosystem can be understood as **seven architectural
+layers**.
+
+------------------------------------------------------------------------
+
+## 1. Experience Layer
+
+This layer represents how users interact with the system.
+
+### Users
+
+-   Employees
+-   Managers
+-   HR Administrators
+-   Payroll Administrators
+-   Finance Users
+-   Procurement Users
+-   Executives
+
+### Interfaces
+
+-   Redwood UI
+-   Self Service
+-   Manager Work Areas
+-   HR Work Areas
+-   Finance Work Areas
+-   Dashboards
+-   Approvals
+
+Purpose: Capture user actions and initiate business transactions.
+
+------------------------------------------------------------------------
+
+## 2. Operational Domain Layer
+
+This layer contains the major application domains.
+
+### HCM Domain
+
+Modules:
+
+-   Core HR
+-   Recruiting
+-   Workforce Structures
+-   Time and Labor
+-   Absence Management
+-   Benefits
+-   Payroll
+-   Talent Management
+
+Purpose: Manage the workforce lifecycle.
+
+------------------------------------------------------------------------
+
+### ERP Domain
+
+Modules:
+
+-   General Ledger
+-   Accounts Payable
+-   Accounts Receivable
+-   Procurement
+-   Cash Management
+-   Fixed Assets
+-   Projects
+-   Grants
+-   Budgetary Control
+
+Purpose: Manage financial and operational transactions.
+
+------------------------------------------------------------------------
+
+## 3. Processing and Control Layer
+
+This layer determines how transactions behave.
+
+### Business Logic
+
+Examples:
+
+-   Fast Formulas
+-   Time Rules
+-   Eligibility Profiles
+-   Payroll Rules
+-   Approval Workflows
+-   Funds Check
+-   Encumbrance Accounting
+-   Subledger Accounting Rules
+
+Purpose: Validate, calculate, and route transactions.
+
+------------------------------------------------------------------------
+
+### Security and Governance
+
+Security model includes:
+
+-   Job Roles
+-   Duty Roles
+-   Data Roles
+-   Security Profiles
+-   Data Access Policies
+-   Approval Policies
+
+Purpose: Control access and enforce governance.
+
+------------------------------------------------------------------------
+
+## 4. Shared Enterprise Foundation
+
+This layer provides structural context for all transactions.
+
+### Enterprise Structures
+
+Core objects:
+
+-   Legal Entities
+-   Ledgers
+-   Business Units
+-   Departments / Cost Centers
+-   Organizations
+-   Jobs
+-   Positions
+
+Purpose: Define the organizational structure of the enterprise.
+
+------------------------------------------------------------------------
+
+### Shared Configuration
+
+Shared configuration objects include:
+
+-   Value Sets
+-   Lookups
+-   Flexfields
+-   Reference Data Sets
+-   Document Sequences
+-   Enterprise Calendar
+-   Currency Setup
+
+Purpose: Provide reusable configuration across modules.
+
+------------------------------------------------------------------------
+
+## 5. Accounting and Financial Truth Layer
+
+This layer records the financial impact of transactions.
+
+Core components:
+
+-   Payroll Costing
+-   Financial Distributions
+-   Subledger Accounting
+-   Journal Creation
+-   General Ledger
+-   Audit Trail
+
+Purpose: Create the official financial record of the organization.
+
+All operational activity ultimately posts to the **General Ledger**.
+
+------------------------------------------------------------------------
+
+## 6. Data and Reporting Layer
+
+This layer exposes system data.
+
+Components:
+
+-   OTBI (Operational Transactional BI)
+-   BI Publisher
+-   Fusion Analytics Warehouse
+-   Financial Statements
+-   Operational Reports
+-   Data Extracts
+
+Purpose: Provide insight and reporting across the system.
+
+------------------------------------------------------------------------
+
+## 7. Integration and Platform Layer
+
+This layer connects Fusion to the outside world.
+
+### Integration Tools
+
+-   REST APIs
+-   HDL (HCM Data Loader)
+-   HSDL
+-   FBDI
+-   Oracle Integration Cloud
+
+### External Systems
+
+Examples:
+
+-   Banks
+-   State Government Systems
+-   Tax Agencies
+-   Pension Systems
+-   Data Warehouses
+
+Purpose: Move data between systems.
+
+------------------------------------------------------------------------
+
+# Core Enterprise Flows
+
+The following flows represent common end-to-end system processes.
+
+------------------------------------------------------------------------
+
+## Hire to Retire
+
+Recruit Candidate ↓ Hire Worker ↓ Create Assignment ↓ Workforce
+Management ↓ Payroll ↓ Financial Accounting ↓ Reporting
+
+------------------------------------------------------------------------
+
+## Time to Payroll
+
+Employee enters time ↓ Time validation rules ↓ Time Consumer Set ↓
+Payroll calculation ↓ Payroll costing ↓ Subledger accounting ↓ General
+ledger
+
+------------------------------------------------------------------------
+
+## Procure to Pay
+
+Requisition ↓ Approval ↓ Purchase Order ↓ Funds Check ↓ Receipt ↓
+Invoice ↓ Payment ↓ Accounting ↓ General Ledger
+
+------------------------------------------------------------------------
+
+## Budget to Actual
+
+Budget Creation ↓ Control Budget ↓ Funds Reservation ↓ Encumbrance ↓
+Expenditure ↓ Budget Consumption ↓ Budget vs Actual Reporting
+
+------------------------------------------------------------------------
+
+# System Mental Model
+
+The agent should understand that Oracle Fusion behaves as a
+**transaction processing pipeline**.
+
+User Action ↓ Application Module ↓ Validation Rules ↓ Enterprise
+Structure Context ↓ Accounting Engine ↓ Reporting ↓ External Systems
+
+------------------------------------------------------------------------
+
+# How the Agent Should Respond
+
+When explaining a concept, the agent should always include:
+
+1.  The architecture layer
+2.  The module domain
+3.  The upstream process
+4.  The downstream impact
+
+Example:
+
+Component: Payroll Costing
+
+Layer: Accounting Layer
+
+Purpose: Allocates payroll results to financial accounting
+distributions.
+
+Upstream: Payroll Run
+
+Downstream: Subledger Accounting → General Ledger
+
+------------------------------------------------------------------------
+
+# Architecture Summary
+
+Oracle Fusion can be summarized as the following stack:
+
+Users ↓ Experience ↓ HCM and ERP Domains ↓ Rules and Controls ↓
+Enterprise Structures ↓ Accounting Engine ↓ Reporting ↓ Integrations ↓
+Platform
